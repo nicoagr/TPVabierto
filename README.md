@@ -1,5 +1,4 @@
 # TPVabierto
-[![Build Status](https://travis-ci.com/nicoagr/TPVabierto.svg?branch=master)](https://travis-ci.com/nicoagr/TPVabierto)
 
 Terminal Punto de Venta gratuito, facil de usar, diseñado para pantallas táctiles y muy eficiente. El programa puede operar totalmente aislado del exterior, integrando bases de datos y haciendo los cálculos necesarios para hacer el proceso de venta lo más fluido posible.
 ## Aviso
