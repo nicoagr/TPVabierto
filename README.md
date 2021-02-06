@@ -37,6 +37,6 @@ Apartado de Configuración
 
 > Los productos agregados al ticket, en el menú de venta,  
 ## Descarga e Instalación
-El programa estará disponible próximamente para Windows 7, 8 y 10. Se ofertará en la modalidad de "programa portable".
+El programa estará disponible próximamente para Windows 7, 8 y 10.
 ### Legal
 *Este proyecto NO tiene una licencia "de código abierto". Para obtener más información sobre licencias de código abierto, haz click [aquí](https://opensource.org/faq). Si quieres saber qué significa que este proyecto no tenga una licencia "de código abierto", haz click [aquí](https://choosealicense.com/no-permission/)*
