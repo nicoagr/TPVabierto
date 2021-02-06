@@ -28,13 +28,17 @@ Apartado de Configuración
 
 > Falta validación de categorías en el menú "Gestión de Productos"
 
+> Agregar funcionalidades del programa a este archivo
+
+> Mejorar ticket impreso (PDF)
+
 > Se requieren gráficos para el botón de consulta de tickets
 
 > Se requiere una manera de salir de un ticket sin guardar
 
 > Se requiere un menú de tickets recientes
 
-> Los productos agregados al ticket, en el menú de venta,  
+> Los productos agregados al ticket, en el menú de venta, no se pueden eliminar
 ## Descarga e Instalación
 El programa estará disponible próximamente para Windows 7, 8 y 10.
 ### Legal
