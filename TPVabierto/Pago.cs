@@ -10,6 +10,7 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using GemBox.Document;
+using System.Linq;
 
 namespace TPVabierto
 {
@@ -27,6 +28,7 @@ namespace TPVabierto
             Pago p = new Pago();
             p.idlabel.Visible = false;
             p.empleado.Visible = false;
+            p.label1.Visible = false;
 
             p.idlabel.Text = id;
             p.empleado.Text = trabajador;
@@ -195,7 +197,12 @@ namespace TPVabierto
             // Marcar el ticket como pagado
             API.Comandodb("UPDATE Tickets SET Pagado = '" + total.Text + "' WHERE id = " + idlabel.Text);
 
-            imprimirTicket();
+            pictureBox13.Visible = false;
+            tarjeta.Visible = false;
+            label1.Visible = true;
+            Application.DoEvents();
+
+            imprimirTicket(idlabel.Text);
 
             //Cerrar las ventanas y abrir un nuevo ticket
             if ( API.LeerLineaEspecificaArchivo(_conf, 8) == "nuevo")
@@ -227,7 +234,12 @@ namespace TPVabierto
             // Marcar el ticket como pagado
             API.Comandodb("UPDATE Tickets SET Pagado = 'Tarjeta' WHERE id = " + idlabel.Text);
 
-            imprimirTicket();
+            pictureBox13.Visible = false;
+            tarjeta.Visible = false;
+            label1.Visible = true;
+            Application.DoEvents();
+
+            imprimirTicket(idlabel.Text);
 
             //Cerrar las ventanas y abrir un nuevo ticket
             if (API.LeerLineaEspecificaArchivo(_conf, 8) == "nuevo")
@@ -247,19 +259,47 @@ namespace TPVabierto
             }
         }
 
-        internal void imprimirTicket()
+        internal void imprimirTicket(string iddelticketaimprimir)
         {
+            if (!Directory.Exists("Tickets")) Directory.CreateDirectory("Tickets");
+
+
+            string textoproductos = string.Empty;
+
+            Pago p = new Pago();
+            string productostemp = API.DeXsacaYdb("Tickets", "id", iddelticketaimprimir, "Productos");
+            string productos = API.ArrayToStringEnNuevaLinea(API.ComasAString(productostemp));
+            // Leer la lista linea por linea
+            using (StringReader reader = new StringReader(productos))
+            {
+                string linea;
+                while ((linea = reader.ReadLine()) != null)
+                {
+                    decimal precio = decimal.Parse(API.DeXsacaYdb("Productos", "Producto", linea, "Precio"));
+                    int espacios = 30 - linea.ToCharArray().Count();
+                    string hueco = string.Concat(Enumerable.Repeat(" ", espacios));
+
+                    if (textoproductos == string.Empty) textoproductos = linea + hueco + precio;
+                    else textoproductos = textoproductos + Environment.NewLine + linea + hueco + precio;
+                }
+            }
+
+
             // Generar Texto
-            string texto = "---------------------" +
+            string texto = 
+                "---------------------------------" +
                 Environment.NewLine +
                 API.LeerLineaEspecificaArchivo(_conf, 1) + 
                 Environment.NewLine +
-                "---------------------"
-
-
-
-
-
+                "---------------------------------" +
+                Environment.NewLine +
+                textoproductos +
+                Environment.NewLine +
+                "---------------------------------" +
+                Environment.NewLine +
+                "Muchas gracias por su confianza" +
+                Environment.NewLine +
+                "---------------------------------"
 
                 ;
 

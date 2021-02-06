@@ -58,6 +58,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cerrarimg = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tarjeta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -392,12 +393,25 @@
             this.cerrarimg.TabStop = false;
             this.cerrarimg.Click += new System.EventHandler(this.cerrarimg_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(136, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(886, 108);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Guardando Ticket...";
+            this.label1.Visible = false;
+            // 
             // Pago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 586);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tarjeta);
             this.Controls.Add(this.empleado);
             this.Controls.Add(this.ignorar1);
@@ -486,5 +500,6 @@
         private System.Windows.Forms.Label ignorar1;
         private System.Windows.Forms.Label empleado;
         private System.Windows.Forms.PictureBox tarjeta;
+        private System.Windows.Forms.Label label1;
     }
 }
